@@ -1,0 +1,149 @@
+{
+  "erstellt": "2026-10-24T21:31:23.241Z",
+  "commit": "84428f3db7c51f5eeb0131859177646abaed457b",
+  "umgebung": {
+    "proj4": true,
+    "gdal": true,
+    "terrio": true
+  },
+  "bestanden": 27,
+  "gesamt": 27,
+  "uebersprungen": [],
+  "pruefungen": [
+    {
+      "name": "Dateinamen nach BDA-Muster (MPoly_<Mnr>.shp/.shx/.dbf/.prj/.cpg)",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "DBF: Kopf- und Satzlänge wie Vorlage (385 / 1563 Bytes)",
+      "ok": true,
+      "info": "385/1563"
+    },
+    {
+      "name": "DBF: Felder, Typen, Längen, Nachkommastellen wie Vorlage",
+      "ok": true,
+      "info": "id:N10.0 Gemeinde:C254.0 KGname:C254.0 Mnr:C254.0 Mnart:C1.0 Fundart:C254.0 Datierung:C254.0 SE:N5.0 GstNrBEF:C254.0 Erhaltung:C1.0 Area:N21.2"
+    },
+    {
+      "name": "DBF: genau ein Datensatz (Teilflächen verschmolzen)",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "DBF: Umlaute als UTF-8 erhalten",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "DBF: Mehrfachnennungen mit Semikolon",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "DBF: SE als Ganzzahl, Area mit 2 Nachkommastellen rechtsbündig in 21 Stellen",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "Fläche: 40×25 + 10×10 − 2×2 = 1096,00 m²",
+      "ok": true,
+      "info": "1096"
+    },
+    {
+      "name": ".cpg = UTF-8, .prj wörtlich aus der Vorlage",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "SHP: Typ 5 (Polygon, 2D) wie Vorlage",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "SHP: Dateilänge im Kopf stimmt",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "SHX: Länge 100 + 8 je Datensatz",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "SHP: ein Datensatz mit 3 Ringen (2 Außenringe, 1 Loch)",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "SHP: Außenringe im Uhrzeigersinn, Loch gegen den Uhrzeigersinn, Ringe geschlossen",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "Attributprüfung meldet falsche Werte",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "Attributprüfung: gültige Werte ohne Meldung",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "Kürzung auf 254 Bytes zerteilt kein Umlaut-Zeichen",
+      "ok": true,
+      "info": "127 Zeichen"
+    },
+    {
+      "name": "B: Projektion liefert endliche Werte",
+      "ok": true,
+      "info": "[[\"496474.708\",\"302941.720\"],[\"496514.689\",\"302966.721\"],[\"400000.000\",\"437688.575\"],[\"340018.450\",\"337724.286\"],[\"499977.429\",\"287747.502\"]]"
+    },
+    {
+      "name": "B: Hin- und Rückweg < 0,1 mm",
+      "ok": true,
+      "info": "0.0018 mm"
+    },
+    {
+      "name": "B: proj4js gegen GDAL/PROJ (EPSG-Definitionen) < 1 mm",
+      "ok": true,
+      "info": "max. 0.000 mm"
+    },
+    {
+      "name": "C: GDAL erkennt Polygon, 1 Objekt",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "C: GDAL liest Feldtypen wie in der Vorlage",
+      "ok": true,
+      "info": "id: Integer64 (10.0) | Gemeinde: String (254.0) | KGname: String (254.0) | Mnr: String (254.0) | Mnart: String (1.0) | Fundart: String (254.0) | Datierung: String (254.0) | SE: Integer (5.0) | GstNrBEF: String (254.0) | Erhaltung: String (1.0) | Area: Real (21.2)"
+    },
+    {
+      "name": "C: GDAL erkennt Lambert-Koordinatensystem",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "C: GDAL liest Umlaute korrekt (UTF-8 über .cpg)",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "C: Fläche im Shapefile stimmt mit Berechnung",
+      "ok": true,
+      "info": "Area 1095.26"
+    },
+    {
+      "name": "D: Terrio-Projektion gegen proj4js < 1 mm",
+      "ok": true,
+      "info": "max. 0.000 mm"
+    },
+    {
+      "name": "D: Terrio liest unser Shapefile (1 Objekt, Umlaute)",
+      "ok": true,
+      "info": "{\"id\":1,\"Gemeinde\":\"St. Pölten\",\"KGname\":\"Ratzersdorf an der Traisen\",\"Mnr\":\"19560.22.01\",\"Mnart\":\"G\",\"Fundart\":\"Befestigung; Bestattung\",\"Datierung\":\"Bronzezei"
+    }
+  ]
+}

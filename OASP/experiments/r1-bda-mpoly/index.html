@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R1 – BDA-Maßnahmenpolygon</title>
+<style>:root{--bg:#f8fafc;--panel:#fff;--line:#cbd5e1;--text:#0f172a;--muted:#475569;--acc:#0369a1;--bad:#b91c1c;--ok:#15803d} @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--panel:#1e293b;--line:#334155;--text:#f1f5f9;--muted:#94a3b8;--acc:#38bdf8;--bad:#f87171;--ok:#4ade80}} *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,sans-serif} main{max-width:860px;margin:0 auto;padding:12px 16px 40px} h1{font-size:19px;margin:6px 0 2px} .sub{color:var(--muted);font-size:13px} section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;margin:12px 0} h2{font-size:15px;margin:0 0 8px} label{display:block;font-size:13px;color:var(--muted);margin:8px 0 2px} input,select,textarea{font:inherit;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text)} textarea{font:13px ui-monospace,Menlo,Consolas,monospace;min-height:140px} .row{display:grid;grid-template-columns:1fr 1fr;gap:10px} .checks{display:flex;flex-wrap:wrap;gap:4px 14px} .checks label{display:inline-flex;gap:6px;align-items:center;color:var(--text);margin:2px 0} .checks input{width:auto} button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:12px 16px;min-height:48px;background:var(--acc);color:#fff;cursor:pointer;margin:6px 6px 0 0} button.sec{background:transparent;color:var(--text);border:2px solid var(--line)} canvas{width:100%;height:260px;border:1px solid var(--line);border-radius:8px;background:var(--bg)} pre{white-space:pre-wrap;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;margin:0} .bad{color:var(--bad)} .ok{color:var(--ok)} @media (max-width:560px){.row{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<main>
+  <h1>R1 · BDA-Maßnahmenpolygon <span class="sub" id="ver"></span></h1>
+  <div class="sub">Grabungsgrenze in Gauß-Krüger → Shapefile nach BDA-Vorlage in Lambert (EPSG 31287). Alles läuft im Browser.</div>
+
+  <section>
+    <h2>1 · Grabungsgrenze</h2>
+    <div class="row">
+      <div><label for="src">Koordinatensystem der Messdaten</label>
+        <select id="src"><option value="EPSG:31254">MGI / GK West M28 (31254)</option><option value="EPSG:31255" selected>MGI / GK Central M31 (31255)</option><option value="EPSG:31256">MGI / GK East M34 (31256)</option></select></div>
+      <div><label for="file">GSI- oder CSV-Datei laden (optional)</label><input id="file" type="file" accept=".gsi,.csv,.txt"></div>
+    </div>
+    <label for="pts">Punkte: eine Zeile je Punkt <code>Fläche;Ost;Nord</code> (Hochwert verkürzt, wie GSI 81/82). Aus GSI werden ARDIG-Codes Typ 93 und 92 übernommen.</label>
+    <textarea id="pts"></textarea>
+    <canvas id="map"></canvas>
+  </section>
+
+  <section>
+    <h2>2 · Angaben für die Attributtabelle</h2>
+    <div class="row">
+      <div><label for="Mnr">Maßnahmennummer (Mnr)</label><input id="Mnr" placeholder="19560.22.01"></div>
+      <div><label for="Mnart">Maßnahmenart (Mnart)</label><select id="Mnart"></select></div>
+      <div><label for="Gemeinde">Ortsgemeinde (Gemeinde)</label><input id="Gemeinde"></div>
+      <div><label for="KGname">Katastralgemeinde (KGname)</label><input id="KGname"></div>
+      <div><label for="SE">Anzahl der SE (SE)</label><input id="SE" type="number" min="0" step="1"></div>
+      <div><label for="Erhaltung">Befunde erhalten? (Erhaltung)</label><select id="Erhaltung"><option value="">–</option><option value="J">J – ja</option><option value="N">N – nein, 100 % untersucht</option></select></div>
+    </div>
+    <label for="GstNrBEF">Grundstücke mit relevanten Bereichen (GstNrBEF), mit Semikolon</label><input id="GstNrBEF" placeholder="101; 102">
+    <label>Fundart (Mehrfachauswahl)</label><div class="checks" id="Fundart"></div>
+    <label>Datierung (Mehrfachauswahl)</label><div class="checks" id="Datierung"></div>
+  </section>
+
+  <section>
+    <h2>3 · Erzeugen</h2>
+    <button id="make">Maßnahmenpolygon erzeugen (ZIP)</button>
+    <button id="demo" class="sec">Beispieldaten</button>
+    <pre id="out"></pre>
+  </section>
+</main>
+<script src="vendor/proj4.js"></script>
+<script type="module">import{MPOLY as h}from"./lib/vorlage.mjs";import{buildMPoly as S,makeProjector as P}from"./lib/mpoly.mjs";import{zipStore as T}from"./lib/zip.mjs";const e=n=>document.getElementById(n),x="84428f3 \xB7 2026-10-24".startsWith("__")?"lokal":"84428f3 \xB7 2026-10-24";e("ver").textContent=x,e("Mnart").innerHTML='<option value="">\u2013</option>'+Object.entries(h.mnart).map(([n,o])=>`<option value="${n}">${n} \u2013 ${o}</option>`).join("");const $=(n,o)=>e(n).innerHTML=o.map(t=>`<label><input type="checkbox" value="${t}"> ${t}</label>`).join("");$("Fundart",h.fundart),$("Datierung",h.datierung);const G={0:1e3,1:1e3,6:1e4,7:1e4,8:1e5};function z(n){const o=[];for(const t of n.split(/\r?\n/)){const i={};for(const s of t.replace(/^\*/,"").trim().split(/\s+/)){const r=s.replace(/^\*/,""),c=r.slice(6).match(/^([+-])(.+)$/);r.length>7&&c&&(i[r.slice(0,2)]={unit:r[5],sign:c[1],data:c[2]})}if(!i[11]||!i[81]||!i[82])continue;const a=i[11].data.slice(-10),p=s=>(i[s].sign==="-"?-1:1)*Number(i[s].data)/(G[i[s].unit]||1e3),l=a.slice(5,7);l!=="93"&&l!=="92"||o.push(`${a.slice(0,5)}${l};${p("81").toFixed(3)};${p("82").toFixed(3)}`)}return o.join(`
+`)}e("file").onchange=async n=>{const o=n.target.files[0];if(!o)return;const t=await o.text();e("pts").value=/\*?11\d{4}[+-]/.test(t)?z(t):t,m()};function w(){const n=new Map;for(const o of e("pts").value.split(/\r?\n/)){const t=o.split(/[;,\t]/).map(i=>i.trim());t.length<3||!Number.isFinite(+t[1])||(n.has(t[0])||n.set(t[0],[]),n.get(t[0]).push([+t[1],+t[2]]))}return[...n.values()].filter(o=>o.length>=3).map(o=>[o])}function m(n){const o=e("map"),t=o.getBoundingClientRect(),i=devicePixelRatio||1;o.width=t.width*i,o.height=t.height*i;const a=o.getContext("2d");a.setTransform(i,0,0,i,0,0),a.clearRect(0,0,t.width,t.height);const p=w(),l=p.flat(2);if(!l.length)return;const s=l.map(u=>u[0]),r=l.map(u=>u[1]),c=Math.min(...s),g=Math.max(...s),d=Math.min(...r),f=Math.max(...r),v=Math.min((t.width-30)/(g-c||1),(t.height-30)/(f-d||1)),b=u=>15+(u-c)*v,M=u=>t.height-15-(u-d)*v;a.strokeStyle=getComputedStyle(document.body).getPropertyValue("--acc"),a.fillStyle="rgba(3,105,161,.15)",a.lineWidth=2;for(const u of p)for(const k of u)a.beginPath(),k.forEach(([y,F],E)=>E?a.lineTo(b(y),M(F)):a.moveTo(b(y),M(F))),a.closePath(),a.fill(),a.stroke();a.fillStyle=getComputedStyle(document.body).getPropertyValue("--muted"),a.font="12px system-ui",a.fillText(`Ost ${c.toFixed(1)}\u2013${g.toFixed(1)} \xB7 Nord ${d.toFixed(1)}\u2013${f.toFixed(1)} (Messsystem, unverzerrt)`,10,14)}e("pts").oninput=()=>m(),e("demo").onclick=()=>{e("pts").value=["Fl\xE4che1;96500;165200","Fl\xE4che1;96540;165200","Fl\xE4che1;96540;165225","Fl\xE4che1;96500;165225","Fl\xE4che2;96580;165210","Fl\xE4che2;96590;165210","Fl\xE4che2;96590;165220","Fl\xE4che2;96580;165220"].join(`
+`),e("Mnr").value="19560.22.01",e("Mnart").value="G",e("Gemeinde").value="St. P\xF6lten",e("KGname").value="Ratzersdorf an der Traisen",e("SE").value=354,e("Erhaltung").value="J",e("GstNrBEF").value="101; 102; 500";for(const n of["Befestigung","Bestattung"])e("Fundart").querySelector(`[value="${n}"]`).checked=!0;for(const n of["Bronzezeit","Mittelalter"])e("Datierung").querySelector(`[value="${n}"]`).checked=!0;m()};const j=n=>[...e(n).querySelectorAll("input:checked")].map(o=>o.value).join("; ");e("make").onclick=()=>{const n=e("out");if(!window.proj4){n.innerHTML='<span class="bad">proj4js fehlt \u2013 Projektion nicht m\xF6glich (lokal ohne npm install).</span>';return}const o={Gemeinde:e("Gemeinde").value.trim(),KGname:e("KGname").value.trim(),Mnr:e("Mnr").value.trim(),Mnart:e("Mnart").value,Fundart:j("Fundart"),Datierung:j("Datierung"),SE:e("SE").value===""?NaN:Number(e("SE").value),GstNrBEF:e("GstNrBEF").value.trim(),Erhaltung:e("Erhaltung").value},t=e("src").value,i=S({polygonsGK:w(),sourceEpsg:t,attrs:o,project:P(window.proj4,t),appVersion:x}),a=new TextDecoder().decode(Object.entries(i.files).find(([r])=>r.endsWith("_Protokoll.txt"))[1]);if(i.problems.length){n.innerHTML=`<span class="bad">Nicht abgabefertig:</span>
+`+i.problems.map(r=>"\u2022 "+r).join(`
+`);return}const p=[...new Set(e("pts").value.split(/\r?\n/).map(r=>r.split(/[;,\t]/)[0].trim()).filter(r=>/92$/.test(r)))];p.length&&i.warnings.push(`Offene Grabungsgrenze (ARDIG 92) als Fl\xE4che geschlossen: ${p.join(", ")} \u2013 bitte pr\xFCfen`);const l=T(Object.entries(i.files).map(([r,c])=>({name:(r.endsWith("_Protokoll.txt")?"12 Vermessungsunterlagen/":"14 Ma\xDFnahmenpolygon/")+r,data:c}))),s=document.createElement("a");s.href=URL.createObjectURL(new Blob([l],{type:"application/zip"})),s.download=`MPoly_${o.Mnr}.zip`,s.click(),setTimeout(()=>URL.revokeObjectURL(s.href),2e3),n.innerHTML=`<span class="ok">Erzeugt: MPoly_${o.Mnr}.zip</span>
+`+i.warnings.map(r=>`<span class="bad">Warnung: ${r}</span>
+`).join("")+`
+`+a.replace(/[<>&]/g,r=>({"<":"&lt;",">":"&gt;","&":"&amp;"})[r])},window.addEventListener("resize",()=>m());</script>
+</body>
+</html>
