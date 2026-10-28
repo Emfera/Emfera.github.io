@@ -73,7 +73,7 @@
   </section>
 </main>
 
-<script>"use strict";const APP_VERSION="1ccf1a1 \xB7 2026-10-28",VERSION=APP_VERSION.startsWith("__")?"lokal":APP_VERSION,$=e=>document.getElementById(e),SPP="00001101-0000-1000-8000-00805f9b34fb",enc=new TextEncoder,latin1=e=>{let t="";for(let n=0;n<e.length;n++)t+=String.fromCharCode(e[n]);return t},unlatin1=e=>{const t=new Uint8Array(e.length);for(let n=0;n<e.length;n++)t[n]=e.charCodeAt(n)&255;return t},nowIso=()=>new Date().toISOString(),hex=e=>[...new Uint8Array(e)].map(t=>t.toString(16).padStart(2,"0")).join("");async function sha256(e){return hex(await crypto.subtle.digest("SHA-256",enc.encode(e)))}const workerSrc=`
+<script>"use strict";const APP_VERSION="bf35f4b \xB7 2026-10-28",VERSION=APP_VERSION.startsWith("__")?"lokal":APP_VERSION,$=e=>document.getElementById(e),SPP="00001101-0000-1000-8000-00805f9b34fb",enc=new TextEncoder,latin1=e=>{let t="";for(let n=0;n<e.length;n++)t+=String.fromCharCode(e[n]);return t},unlatin1=e=>{const t=new Uint8Array(e.length);for(let n=0;n<e.length;n++)t[n]=e.charCodeAt(n)&255;return t},nowIso=()=>new Date().toISOString(),hex=e=>[...new Uint8Array(e)].map(t=>t.toString(16).padStart(2,"0")).join("");async function sha256(e){return hex(await crypto.subtle.digest("SHA-256",enc.encode(e)))}const workerSrc=`
 let gsi=null, jsonl=null, cur=null;
 async function openSession(sid){
   if(cur===sid && gsi && jsonl) return;
