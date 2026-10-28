@@ -1,9 +1,0 @@
-{
-  "status": 200,
-  "cors": null,
-  "bytes": 12744,
-  "browserFetch": {
-    "ok": true,
-    "status": 200
-  }
-}
