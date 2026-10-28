@@ -1,6 +1,6 @@
 {
-  "erstellt": "2026-10-27T05:23:50.818Z",
-  "commit": "b74bad49ac1f9b6e7ac826e0f56088159d11f5be",
+  "erstellt": "2026-10-28T16:15:53.176Z",
+  "commit": "39533c028ea5dfe8f2df6b331e9ca8c44148be6e",
   "umgebung": {
     "proj4": true,
     "gdal": true,
