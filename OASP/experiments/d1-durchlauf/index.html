@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2B2622">
+<meta name="robots" content="noindex,nofollow">
+<title>OASP Durchlauf · D1</title>
+<style>:root{ --bg:#f6f3ec;--panel:#fffdf8;--line:#d9d1c1;--text:#2B2622;--muted:#6b6257; --ok:#2f7d32;--ok-bg:#e5f4e4;--warn:#9a6a00;--warn-bg:#f9eeda; --acc:#D2552E;--ocker:#B98A32;--btn:#2B2622;--btn-text:#F4EFE4; } @media (prefers-color-scheme: dark){ :root{--bg:#1b1815;--panel:#25211d;--line:#433c34;--text:#F4EFE4;--muted:#b3a897;--ok:#7bc47f;--ok-bg:#1f3320;--warn:#e8bf3c;--warn-bg:#3a3018;--btn:#F4EFE4;--btn-text:#2B2622} } *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif} main{max-width:860px;margin:0 auto;padding:12px 16px 48px} header.app{display:flex;align-items:center;gap:10px;margin:4px 0} header.app img{width:40px;height:40px} header.app h1{font-size:19px;margin:0} .demo{background:var(--warn-bg);border:1px solid var(--warn);border-radius:10px;padding:8px 12px;font-size:13px;margin:6px 0 10px} .kette{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0;font-size:14px} .kette a{color:inherit;text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:4px 12px;background:var(--panel)} .kette a.erledigt{border-color:var(--ok);background:var(--ok-bg);color:var(--ok)} .kette a.weiter{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc) inset} .kette .pf{color:var(--muted)} section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0;scroll-margin-top:8px} section.weiter{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)} section h2{font-size:17px;margin:0 0 2px;display:flex;gap:8px;align-items:center;flex-wrap:wrap} section h2 .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ocker);color:#fff;font-size:14px;flex:none} .modul{font-size:13px;color:var(--muted);margin:0 0 6px} .note{font-size:13px;color:var(--muted)} ol.tun{margin:6px 0 8px;padding-left:22px} ol.tun li{margin:3px 0} .btns{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0} a.btn,button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:11px 14px;min-height:46px;background:var(--btn);color:var(--btn-text);cursor:pointer;display:inline-flex;align-items:center;text-decoration:none} button.sec,a.btn.sec{background:transparent;color:var(--text);border:2px solid var(--line)} button.small{min-height:38px;padding:6px 12px;font-size:14px} .chip{display:inline-block;font-size:12px;font-weight:400;padding:1px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap} .chip.ok{color:var(--ok);border-color:var(--ok);background:var(--ok-bg)} .chip.warn{color:var(--warn);border-color:var(--warn);background:var(--warn-bg)} .stand{border-top:1px dashed var(--line);margin-top:10px;padding-top:8px;font-size:14px} .stand h3{font-size:13px;margin:0 0 4px;color:var(--muted);font-weight:600} .stand ul{margin:0;padding-left:18px} .stand li{margin:3px 0;overflow-wrap:anywhere} .stand small{color:var(--muted)} .uebergabe{font-size:13px;margin:8px 0 0;padding:6px 10px;border-left:3px solid var(--ocker);background:var(--bg);border-radius:0 8px 8px 0} details{margin:8px 0} summary{cursor:pointer;font-weight:600;font-size:14px;padding:6px 0} #weitere ul{margin:4px 0;padding-left:18px} #weitere a{color:inherit} footer{color:var(--muted);font-size:13px;margin-top:18px}</style>
+<link rel="icon" href="../../marke/oasp-marke-32.svg" type="image/svg+xml"><link rel="icon" href="../../marke/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="../../marke/oasp-app-icon-180.png"></head>
+<body>
+<main>
+  <header class="app"><img src="../../marke/oasp-marke-64.svg" alt=""><h1>OASP Durchlauf · D1 <span class="chip">35721d6 · 2026-11-16</span></h1></header>
+  <div class="demo"><b>Testversion</b> – führt durch den heutigen Stand der Module: Projekt anlegen, vermessen, kontrollieren und exportieren. Alles bleibt auf diesem Gerät, nichts wird hochgeladen. Das Übungsmaterial ist erfunden.</div>
+
+  <nav class="kette" aria-label="Ablauf">
+    <a href="#s1" id="k1">1 Projekt anlegen</a><span class="pf">→</span>
+    <a href="#s2" id="k2">2 Vermessen</a><span class="pf">→</span>
+    <a href="#s3" id="k3">3 Kontrollieren und exportieren</a>
+    <button id="btnStand" class="sec small" style="margin-left:auto">Stand aktualisieren</button>
+  </nav>
+  <p class="note" id="hinweis">Die Module öffnen sich in einem eigenen Tab. Diese Seite zeigt nach der Rückkehr, was auf dem Gerät angekommen ist.</p>
+
+  <section id="s1">
+    <h2><span class="n">1</span> Projekt anlegen <span class="chip" id="c1">–</span></h2>
+    <p class="modul">Modul <b>Vorbereiten</b>: aus dem Bescheid werden Projekt- und Maßnahmendaten, dazu Maßnahmenfläche und Festpunkte.</p>
+    <ol class="tun">
+      <li><b>Neues Projekt</b> wählen.</li>
+      <li><b>Bescheid (PDF) auslesen …</b> – die vorgeschlagenen Angaben prüfen, dann <b>Angaben übernehmen</b>.</li>
+      <li>Maßnahmenfläche: <b>Shapefile (ZIP) …</b> oder <b>Eckpunktliste eingeben</b>, die Fläche ausdrücklich bestätigen.</li>
+      <li>Festpunkte: <b>Koordinatenliste …</b>, Quelle angeben und die Punkte übernehmen.</li>
+    </ol>
+    <div class="btns"><a class="btn" id="l1" href="../p1-vorbereiten/" target="_blank" rel="noopener">Vorbereiten öffnen</a></div>
+    <details id="uebung">
+      <summary>Übungsmaterial (erfunden) herunterladen</summary>
+      <p class="note">Bescheid, Fläche und Festpunkte passen zueinander und zum Übungsort des Simulators in Schritt 2 (Gauß-Krüger M31).</p>
+      <div class="btns">
+        <button class="sec small" id="uBescheid">Bescheid (PDF)</button>
+        <button class="sec small" id="uFlaeche">Maßnahmenfläche (Shapefile-ZIP, Lambert)</button>
+        <button class="sec small" id="uFp">Festpunkte (CSV)</button>
+      </div>
+      <p class="note" id="uMsg"></p>
+    </details>
+    <div class="stand" id="stand1"></div>
+    <p class="uebergabe"><b>Übergabe an Schritt 2:</b> Auf demselben Gerät findet Capture das Projekt von selbst. Für ein anderes Gerät in Vorbereiten <b>Projektpaket exportieren (.oasp.zip)</b>.</p>
+  </section>
+
+  <section id="s2">
+    <h2><span class="n">2</span> Vermessen <span class="chip" id="c2">–</span></h2>
+    <p class="modul">Modul <b>Capture</b>: schreibt jede Messung des Tachymeters sofort doppelt mit, je Messtag und Aufstellung.</p>
+    <ol class="tun">
+      <li><b>Projekte</b> öffnen. Unter „Auf diesem Gerät vorbereitet“ das Projekt <b>Übernehmen</b> – oder <b>Projektpaket öffnen (.oasp.zip) …</b></li>
+      <li><b>Neue Aufstellung</b>: Standpunkt und Anschluss aus den Festpunkten wählen, <b>Speichern</b>.</li>
+      <li><b>Mit TS07 verbinden</b> – oder ohne Instrument: <b>Simulator (ohne Instrument, nur Test)</b> aufklappen und <b>Simulator starten</b>.</li>
+      <li><b>Tag abschließen</b> oder <b>Export (ZIP)</b>: Das Tagespaket ist die Übergabe an Review.</li>
+    </ol>
+    <div class="btns"><a class="btn" id="l2" href="../c1-feldlogger-demo/?sim" target="_blank" rel="noopener">Capture öffnen (mit Simulator)</a></div>
+    <div class="stand" id="stand2"></div>
+    <p class="uebergabe"><b>Übergabe an Schritt 3:</b> das heruntergeladene Tagespaket <code>oasp_c1_….zip</code> (oder „Ganzes Projekt exportieren“ für alle Messtage).</p>
+  </section>
+
+  <section id="s3">
+    <h2><span class="n">3</span> Kontrollieren und exportieren <span class="chip" id="c3">–</span></h2>
+    <p class="modul">Modul <b>Review</b>: Messdaten in 3D prüfen, nachvollziehbar korrigieren und für CAD und GIS ausgeben.</p>
+    <ol class="tun">
+      <li><b>Messdaten importieren (C1, GSI, CSV) …</b> – das Tagespaket aus Schritt 2 wählen.</li>
+      <li>Bezugssystem unten in der Anzeige prüfen und bestätigen; SE-Baum, 3D-Ansicht und <b>Prüfungen</b> durchgehen.</li>
+      <li>Korrekturen mit Grund eintragen; <b>Verlauf</b> und Rückgängig zeigen jede Änderung.</li>
+      <li><b>Export</b>: DXF, GeoPackage, Punktliste, Prüfbericht oder Review-Projekt. Jeder Export wird vor dem Download zurückgelesen.</li>
+    </ol>
+    <div class="btns"><a class="btn" id="l3" href="../r4-review/" target="_blank" rel="noopener">Review öffnen</a></div>
+    <div class="stand" id="stand3"></div>
+  </section>
+
+  <section id="weitere" hidden>
+    <h2>Weitere Bausteine</h2>
+    <p class="note">Noch nicht in den Ablauf eingebunden.</p>
+    <ul id="weitereListe"></ul>
+  </section>
+
+  <footer>© 2026 Martin Fera. Alle Rechte vorbehalten.</footer>
+</main>
+
+<script type="module">import{stand as p}from"./lib/stand.mjs";const i=e=>document.getElementById(e),a=e=>String(e??"").replace(/[&<>"]/g,t=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[t]),c=e=>{if(!e)return"ohne Datum";const t=new Date(e);return isNaN(t)?"ohne Datum":t.toLocaleDateString("de-AT")},u=(e,t,n)=>`${e} ${e===1?t:n}`,g={erledigt:["ok","auf diesem Ger\xE4t vorhanden"],begonnen:["warn","begonnen, noch nicht abgeschlossen"],offen:["","noch nichts auf diesem Ger\xE4t"],unlesbar:["warn","Stand nicht lesbar"]},m=(e,t)=>`<h3>Auf diesem Ger\xE4t</h3><p class="note"><b>Der Speicher von ${e} ${a(t)}.</b> Ob dort Daten liegen, l\xE4sst sich von hier aus nicht sagen; das Modul selbst zeigt seinen Stand.</p>`;function f(e){return e.fehler?m("Vorbereiten",e.fehler):e.projekte.length?"<h3>Auf diesem Ger\xE4t</h3><ul>"+e.projekte.map(t=>`<li><b>${a(t.name||"ohne Namen")}</b>${t.kopie?" <small>(Konfliktkopie)</small>":""}
+    <small>${t.mnr?"Mnr "+a(t.mnr):"Ma\xDFnahmennummer offen"} \xB7 ${u(t.festpunkte,"Festpunkt","Festpunkte")} \xB7 Ma\xDFnahmenfl\xE4che ${t.flaeche?"best\xE4tigt":t.flaecheOffen?"noch nicht best\xE4tigt":"fehlt"} \xB7 Projektpaket ${t.paket?"exportiert":"noch nicht exportiert"}</small></li>`).join("")+"</ul>":'<h3>Auf diesem Ger\xE4t</h3><p class="note">Noch kein vorbereitetes Projekt.</p>'}function b(e){return e.fehler?m("Capture",e.fehler):!e.projekte.length&&!e.messtage.some(n=>n.zeilen>0)?'<h3>Auf diesem Ger\xE4t</h3><p class="note">Noch kein Projekt in Capture.</p>':"<h3>Auf diesem Ger\xE4t</h3><ul>"+[...e.projekte.map(n=>({q:n,tage:e.messtage.filter(r=>r.projekt_id===n.id)})),{q:null,tage:e.messtage.filter(n=>!e.projekte.some(r=>r.id===n.projekt_id))}].filter(n=>n.q||n.tage.some(r=>r.zeilen>0)).map(({q:n,tage:r})=>{const o=r.filter(l=>l.zeilen>0);return`<li><b>${a(n?n.name||"ohne Namen":"Ohne Projekt")}</b> <small>${n?n.ausVorbereiten?"aus Vorbereiten \xFCbernommen \u2713":n.vorbereitet?"aus einem Projektpaket \xFCbernommen":"in Capture angelegt":""}</small>
+      ${o.length?"<ul>"+o.map(l=>`<li>Messtag ${a(c(l.beginn))}: ${u(l.zeilen,"Zeile","Zeilen")}, ${u(l.aufstellungen,"Aufstellung","Aufstellungen")}
+        <small>\xB7 ${l.inReview!=null?"in Review importiert \u2713":l.abgelegt?"exportiert, Ablage best\xE4tigt":l.download?"Download ausgel\xF6st, noch nicht in Review":"noch nicht exportiert"}</small></li>`).join("")+"</ul>":"<br><small>noch keine Messung</small>"}</li>`}).join("")+"</ul>"}function k(e){if(e.fehler)return m("Review",e.fehler);if(!e.projekte.length)return'<h3>Auf diesem Ger\xE4t</h3><p class="note">Noch kein Projekt in Review.</p>';const t={c1:"Capture",gsi:"Leica GSI",emlid:"Emlid",csv:"CSV"};return"<h3>Auf diesem Ger\xE4t</h3><ul>"+e.projekte.map(n=>`<li><b>${a(n.name||"ohne Namen")}</b>
+    <small>${u(n.messungen,"Messung","Messungen")} \xB7 ${u(n.korrekturen,"Korrektur","Korrekturen")} \xB7 zuletzt ${a(c(n.zeit))}</small>
+    ${n.quellen.length?"<ul>"+n.quellen.map(r=>`<li>${a(t[r.typ]||r.typ)}: ${a(r.name||r.id)} <small>${r.ausCapture?"\xB7 Messtag aus Capture auf diesem Ger\xE4t \u2713":""}</small></li>`).join("")+(n.exporte.length?n.exporte.slice(-3).reverse().map(r=>`<li>Export ${a(c(r.zeit))}: ${a(r.datei||r.profil)} <small>\xB7 R\xFCcklesung ${r.ok?"bestanden \u2713":"<b>abweichend</b> \u2013 in Review nachsehen"}</small></li>`).join(""):"<li><small>noch nichts exportiert</small></li>")+"</ul>":"<br><small>noch keine Quelle importiert</small>"}</li>`).join("")+"</ul>"}let h=null;async function s(){let e;try{e=await p()}catch(t){i("hinweis").textContent="Der Stand auf diesem Ger\xE4t ist nicht lesbar ("+t.message+"). Die Module funktionieren trotzdem.";return}h=e,i("stand1").innerHTML=f(e.p1),i("stand2").innerHTML=b(e.c1),i("stand3").innerHTML=k(e.r4);for(const t of[1,2,3]){const[n,r]=g[e.schritt[t]],o=i("c"+t);o.className="chip "+n,o.textContent=r,i("k"+t).className=(e.schritt[t]==="erledigt"?"erledigt":"")+(e.weiter===t?" weiter":""),i("s"+t).classList.toggle("weiter",e.weiter===t)}}i("btnStand").onclick=s,document.addEventListener("visibilitychange",()=>{document.hidden||s()}),addEventListener("pageshow",s),addEventListener("focus",s);function w(e,t,n){const r=document.createElement("a");r.href=URL.createObjectURL(new Blob([e],{type:n})),r.download=t,document.body.appendChild(r),r.click(),setTimeout(()=>{URL.revokeObjectURL(r.href),r.remove()},2e3),i("uMsg").textContent=`\u201E${t}\u201C \u2013 Download ausgel\xF6st.`}const $=e=>new Promise((t,n)=>{const r=document.createElement("script");r.src=e,r.onload=t,r.onerror=()=>n(new Error(e+" fehlt")),document.head.appendChild(r)}),j=()=>import("./lib/uebung.mjs");async function d(e){const t=await j();if(e==="bescheid")return{bytes:t.pdfAusZeilen(t.UEBUNG_BESCHEID),name:"uebung-bescheid.pdf",typ:"application/pdf"};if(e==="fp")return{bytes:new TextEncoder().encode(t.FP_CSV),name:"uebung-festpunkte.csv",typ:"text/csv"};window.proj4||await $("vendor/proj4.js");const{PROJ_DEFS:n}=await import("../r1-bda-mpoly/lib/mpoly.mjs");return{bytes:t.shapeZipLambert(window.proj4,n),name:"MPoly_72199.26.01.zip",typ:"application/zip"}}for(const[e,t]of[["uBescheid","bescheid"],["uFlaeche","flaeche"],["uFp","fp"]])i(e).onclick=async()=>{try{const n=await d(t);w(n.bytes,n.name,n.typ)}catch(n){i("uMsg").textContent="\xDCbungsmaterial nicht verf\xFCgbar: "+n.message}};const v=[["../r1-bda-mpoly/","Ma\xDFnahmenpolygon f\xFCr die BDA-Abgabe"],["../r2-bda-abgabecheck/","Abgabe-Check der BDA-Ordner"],["../r3-kg-abfrage/","Katastralgemeinde aus den BEV-Verwaltungsgrenzen"],["../c0-webserial-logger/","Logger-Kern (Vorl\xE4ufer von Capture)"]];(async()=>{const e=(await Promise.all(v.map(async([t,n])=>{try{return(await fetch(t+"index.html",{method:"HEAD"})).ok?[t,n]:null}catch{return null}}))).filter(Boolean);e.length&&(i("weitereListe").innerHTML=e.map(([t,n])=>`<li><a href="${t}" target="_blank" rel="noopener">${a(n)}</a></li>`).join(""),i("weitere").hidden=!1)})(),window.oaspDurchlauf={aktualisiere:s,material:d,get stand(){return h}},s();</script>
+</body>
+</html>
